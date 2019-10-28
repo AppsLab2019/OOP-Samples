@@ -1,0 +1,7 @@
+﻿namespace Sandbox
+{
+    class Shell
+    {
+        
+    }
+}
