@@ -203,3 +203,18 @@ Note, that additional method `FindAnimalBy(string name)` is `private` which mean
 
 Now, let's implement entry point of console application `Main` so that object `Zoo` is created and it's update and feed methods are called.
 
+```csharp
+static void Main(string[] args)
+{
+    var zoo = new Zoo();
+    Console.WriteLine("Press CTRL+C to exit.");
+
+    while (true)
+    {
+        zoo.Update();
+        Console.WriteLine("Which animal would you like to feed?");
+        string input = Console.ReadLine();
+        zoo.Feed(input, 3);
+    }
+}
+```
