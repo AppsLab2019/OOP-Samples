@@ -10,9 +10,12 @@ namespace Sample_02.Animals
         {
             animals = new List<Animal>
             {
-                new Animal("Lion", "Mammal", 200, 7),
+                new Animal("Lion", "Mammal", 200, 9),
                 new Animal("Bear", "Mammal", 300, 10),
-                new Animal("Cat", "Mammal", 50, 5),
+                new Animal("Giraffe", "Mammal", 100, 7),
+                new Animal("Panda", "Mammal", 100, 4),
+                new Animal("Elephant", "Mammal", 400, 5),
+                new Animal("Cat", "Mammal", 50, 6),
                 new Animal("Fish", "Aquarium", 10, 3),
             };
         }
