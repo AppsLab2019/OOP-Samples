@@ -28,8 +28,6 @@ class Car
 
 The second class representing a bus objects would look like this:
 
----
-
 ```csharp
 class Bus
 {
@@ -68,7 +66,6 @@ If we code it this way some parts of code in both classes is the same. In additi
 
 Here comes principle of inheritance just in hand. When we use inheritance, we create a class that will contain properties and methods that are common for certain group of objects. Bus, car, motorbike, van.. these are all vehicles and they all have something in common like we have seen before. So let’s create a class `Vehicle` and put there a code that is relevant for all kinds of vehicles. The class `Vehicle` could liked this:
 
-
 ```csharp
 class Vehicle
 {
@@ -93,7 +90,6 @@ class Vehicle
     }
 }
 ```
----
 
 We all know these code from previous classes. There is just one difference that we added `numberOfWheels` parameter to constructor so now we can specify how many wheels will vehicle have in a moment of its creation. About all kind vehicles we can say that they have some wheels, some consumption and actual fuel capacity that can be updated via `UpdateActualFuelCapacity` method we have also adjusted the name of the method to be more general, so we don’t have UpdateBusActualFuelCapacity and UpdateCarActualFuelCapacity but only UpdateActualFuelCapacity).
 
@@ -102,24 +98,6 @@ Ok! Now we have our class that we can create a Vehicles from. But remember our c
 Just like in real life. We are kids of our father and mother and we did inherit something from them, for example the name – and that makes us all to be from one family with the same name property.
 
 So let’s change the Bus class to look like this:
-
-```csharp
-public Book FindByName(string name)
-{
-    foreach (var book in books)
-    {
-        if (book.Name == name)
-        {
-            return book;
-        }
-    }
-    return null;
-}
-```
-
----
-
-Let's add method to `Library` class to find book by `author`:
 
 ```csharp
 class Bus : Vehicle
@@ -134,31 +112,6 @@ class Bus : Vehicle
     public void AddStop() { }
     public void RemoveStop() { }
 
-}
-```
-
-See that all these methods could return found `book` object or `null` when book is not found.
-`null` is a special keyword in C# that basically says that there is **no object**.
-
-Let's continue.
-
----
-If we have a `Book` object found we need to check if this book is available and it can be borrowed.
-Let's add new `bool` property to `Book` class that will informs about available state. Like this:
-
-```csharp
-class Book
-{
-    public Book(int id, string name, string author)
-    {
-        Name = name;
-        Author = author;
-    }
-
-    public int Id { get; }
-    public string Name { get; }
-    public string Author { get; }
-    public bool IsAvailable { get; set; }
 }
 ```
 
@@ -182,7 +135,7 @@ static void Main(string[] args)
 
 Thanks to inheritance this is not a problem. We could also have a list of vehicles (`List<Vehicle>`) defined and we could put there all cars and buses and we wouldn’t need to have separate lists for both types because they are both vehicles so they perfectly fit to list of vehicles. If we run this code we’ll get the output:
 
-This is a vehicle.
+This is a vehicle.  
 This is a vehicle.
 
 They both are vehicles and since we have not yet defined a specific `ToString()` method for `Car` nor for `Bus`, `base` class `ToString()` is used. What if wanted to have “This is a car.” at the output when vehicle is a car, and “This is a bus.” when it’s a bus?
@@ -203,8 +156,6 @@ public string ToString()
 
 We do the same in `Bus` class – we add following method to `Bus` class:
 
----
-
 ```csharp
 public string ToString()
 {
@@ -214,10 +165,8 @@ public string ToString()
 ```
 Let’s what we’ll get when we run the code again:
 
+This is a vehicle.  
 This is a vehicle.
-This is a vehicle.
-
----
 
 Nothing has changed with the output. That’s because we forgot something. Method in base and child class has the same name (`ToString()`) and C# will execute the base method since we specified type as Vehicle when we were creating our objects. If we want to have `ToString()` method working as we desire here, we need to add `override` keyword to method declaration in child classes:
 
@@ -228,10 +177,9 @@ public override string ToString()
 }
 ```
 
-`override` keyword will tell C# that we want to override parent’s method and that we want to use our own instead. We also need to use this keyword at `ToString()` method in base class to say that this method can be overridden. Let’s do it and see what we get now:
----
+`override` keyword will tell C# that we want to override parent’s method and that we want to use our own instead. We also need to use this keyword at ToString() method in base class to say that this method can be overridden. Let’s do it and see what we get now:
 
-This is a bus.
+This is a bus.  
 This is a car.
 
 Looks better now.
